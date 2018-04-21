@@ -3,7 +3,7 @@
 
 ### 字体
 
-来源: icon-fonts: http://www.iconfont.cn
+来源: icon-fonts http://www.iconfont.cn
 
 在线:
 
@@ -96,6 +96,8 @@ config: src/js/share.js
 ```
 
 ### 效果
+
+[Demo](https://htmlpreview.github.io/?https://github.com/wangriyu/social-share/blob/08f4f6e2a8582a6138f8fd751887f7516f294d77/index.html)
 
 ![gif](share.gif)
 
