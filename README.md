@@ -99,6 +99,41 @@ config: src/js/share.js
 
 [Demo](https://htmlpreview.github.io/?https://github.com/wangriyu/social-share/blob/08f4f6e2a8582a6138f8fd751887f7516f294d77/index.html)
 
+[Blog](http://blog.wangriyu.wang/tags/)
+
 ![gif](share.gif)
+
+### 使用
+
+在 head 引入:
+
+```html
+  <!--<link href='//at.alicdn.com/t/font_635087_ef20v4flda62yb9.css' rel='stylesheet'>-->
+  <link href='src/css/iconfont.css' rel='stylesheet'>
+  <link rel='stylesheet' href='src/css/share.min.css' type='text/css' media='all'/>
+```
+
+在 body 中插入:
+
+```html
+<div>
+  <div class='social_share'>
+    <ul id='social_list' class='social_icon_list'></ul>
+  </div>
+  <div id='modal-container'>
+    <div class='modal-background'>
+      <div class='modal'>
+        <h2>Copy Link !</h2>
+        <p id='link'>http://blog.wangriyu.wang</p>
+        <svg class='modal-svg' xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' preserveAspectRatio='none'>
+          <rect x='0' y='0' fill='none' width='360' height='162' rx='3' ry='3'></rect>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <script src='src/js/qrcode.min.js'></script>
+  <script src='src/js/share.min.js'></script>
+</div>
+```
 
 欢迎提 issue 和 pr，如果觉得好请 star 支持一下!

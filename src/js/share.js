@@ -7,7 +7,7 @@
   /*
   * 分享链接的信息
   */
-  var title = 'Wang RiYu\'s Blog' || window.location.href, url = 'http://blog.wangriyu.wang' || window.location.hostname, author = 'yule' || 'yule', img = 'http://blog.wangriyu.wang/img/yule.jpg' || 'http://blog.wangriyu.wang/img/yule.jpg';
+  var title = "Wang RiYu's Blog" || window.location.href, url = 'http://blog.wangriyu.wang' || window.location.hostname, author = 'yule' || 'yule', img = 'http://blog.wangriyu.wang/img/yule.jpg' || 'http://blog.wangriyu.wang/img/yule.jpg';
   /*
   * 修改 set 为 false 关闭相应按钮
   * icon: http://www.iconfont.cn
@@ -88,15 +88,25 @@
       li.setAttribute('class', `li_item link_${e.name}`);
       switch (e.name) {
         case'wechat': {
-          li.innerHTML = `<a class="item"href="${e.api}"><i class="iconfont ${e.icon}"></i><div id="qrcode"></div></a>`;
+          li.innerHTML = `<a class='item' href="${e.api}">
+                            <i class='iconfont ${e.icon}'></i>
+                            <div id='qrcode'>
+                            </div>
+                          </a>`;
           break
         }
         case'copy': {
-          li.innerHTML = `<span id="copyBtn"class="item"title="${e.title}"><i class="iconfont ${e.icon}"></i><span class="social_name">Copy link</span></span>`;
+          li.innerHTML = `<span id='copyBtn' class='item' title='${e.title}'>
+                            <i class='iconfont ${e.icon}'></i>
+                            <span class='social_name'>Copy link</span>
+                          </span>`;
           break
         }
         default: {
-          li.innerHTML = `<a class='item'href="${e.api}"rel="nofollow"target="_blank"title='${e.title}'><i class="iconfont ${e.icon}"></i><span class="social_name">${e.name === 'qq' ? 'QQ' : e.name}</span></a>`;
+          li.innerHTML = `<a class='item' href="${e.api}" rel='nofollow' target='_blank' title='${e.title}'>
+                            <i class='iconfont ${e.icon}'></i>
+                            <span class='social_name'>${e.name === 'qq' ? 'QQ' : e.name}</span>
+                          </a>`;
         }
       }
       ul.appendChild(li)
