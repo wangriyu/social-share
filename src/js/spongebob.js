@@ -10,7 +10,6 @@
   var title = "Wang RiYu's Blog" || window.location.hostname, url = 'http://blog.wangriyu.wang' || window.location.href, author = 'yule' || 'yule', img = 'http://blog.wangriyu.wang/img/yule.jpg' || 'http://blog.wangriyu.wang/img/yule.jpg';
   /*
   * 修改 set 为 false 关闭相应按钮
-  * icon: http://www.iconfont.cn
   */
   var config = [{
     name: 'facebook',
@@ -98,7 +97,7 @@
           li.innerHTML = `<span id='copyBtn' class='item' title='${e.title}'>
                             <i class='iconfont ${e.icon}'></i>
                             <span class='social_name'>Copy link</span>
-                            <textarea id="selection" style="display: none">a</textarea>
+                            <textarea id='selection' style='display: none'>a</textarea>
                           </span>`;
           break
         }
@@ -113,23 +112,36 @@
     }
   })
 
-  document.getElementById('copyBtn').onclick = function copyClick () {
-    document.getElementById('selection').select(); // fix safari copy noresponse
-    document.execCommand('copy');
-    document.getElementById('modal-container').setAttribute('class', 'sketch')
+  document.getElementById('copyBtn').onclick = function () {
+    var input = document.createElement('input'); // fix ios safari copy event
+    input.setAttribute('readonly', 'readonly');
+    input.setAttribute('value', url);
+    document.body.appendChild(input);
+    if (!!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)) {
+      input.setSelectionRange(0, input.value.length);
+    } else {
+      document.getElementById('selection').select();
+    }
+    document.execCommand("copy") || (document.getElementById("link").textContent="Failed！");
+    document.getElementById('modal-container').setAttribute('class', 'sketch');
+    document.body.removeChild(input);
   }
 
   document.getElementById('copyBtn').oncopy = function (event) {
-    if (!-[1,]) {
-      if (window.clipboardData) {
-        window.clipboardData.setData('Text', window.location.href);
-        document.getElementById('link').textContent = window.clipboardData.getData('Text')
-      }
+    if (!!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)) {
+      document.getElementById('link').textContent = url;
     } else {
-      event.preventDefault()
-      if (event.clipboardData) {
-        event.clipboardData.setData('text/plain', window.location.href);
-        document.getElementById('link').textContent = event.clipboardData.getData('text')
+      if (!-[1,]) {
+        if (window.clipboardData) {
+          window.clipboardData.setData('Text', url);
+          document.getElementById('link').textContent = window.clipboardData.getData('Text')
+        }
+      } else {
+        event.preventDefault()
+        if (event.clipboardData) {
+          event.clipboardData.setData('text/plain', url);
+          document.getElementById('link').textContent = event.clipboardData.getData('text')
+        }
       }
     }
   }
