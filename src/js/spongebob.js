@@ -7,7 +7,7 @@
   /*
   * 分享链接的信息
   */
-  var title = "Wang RiYu's Blog" || window.location.href, url = 'http://blog.wangriyu.wang' || window.location.hostname, author = 'yule' || 'yule', img = 'http://blog.wangriyu.wang/img/yule.jpg' || 'http://blog.wangriyu.wang/img/yule.jpg';
+  var title = "Wang RiYu's Blog" || window.location.hostname, url = 'http://blog.wangriyu.wang' || window.location.href, author = 'yule' || 'yule', img = 'http://blog.wangriyu.wang/img/yule.jpg' || 'http://blog.wangriyu.wang/img/yule.jpg';
   /*
   * 修改 set 为 false 关闭相应按钮
   * icon: http://www.iconfont.cn
@@ -90,8 +90,7 @@
         case'wechat': {
           li.innerHTML = `<a class='item' href="${e.api}">
                             <i class='iconfont ${e.icon}'></i>
-                            <div id='qrcode'>
-                            </div>
+                            <div id='qrcode'></div>
                           </a>`;
           break
         }
@@ -99,6 +98,7 @@
           li.innerHTML = `<span id='copyBtn' class='item' title='${e.title}'>
                             <i class='iconfont ${e.icon}'></i>
                             <span class='social_name'>Copy link</span>
+                            <textarea id="selection" style="display: none">a</textarea>
                           </span>`;
           break
         }
@@ -114,6 +114,7 @@
   })
 
   document.getElementById('copyBtn').onclick = function copyClick () {
+    document.getElementById('selection').select(); // fix safari copy noresponse
     document.execCommand('copy');
     document.getElementById('modal-container').setAttribute('class', 'sketch')
   }
