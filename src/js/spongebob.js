@@ -119,6 +119,7 @@
     document.body.appendChild(input);
     if (!!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)) {
       input.setSelectionRange(0, input.value.length);
+      document.getElementById('link').textContent = url;
     } else {
       document.getElementById('selection').select();
     }
@@ -128,20 +129,16 @@
   }
 
   document.getElementById('copyBtn').oncopy = function (event) {
-    if (!!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)) {
-      document.getElementById('link').textContent = url;
+    if (!-[1,]) {
+      if (window.clipboardData) {
+        window.clipboardData.setData('Text', url);
+        document.getElementById('link').textContent = window.clipboardData.getData('Text')
+      }
     } else {
-      if (!-[1,]) {
-        if (window.clipboardData) {
-          window.clipboardData.setData('Text', url);
-          document.getElementById('link').textContent = window.clipboardData.getData('Text')
-        }
-      } else {
-        event.preventDefault()
-        if (event.clipboardData) {
-          event.clipboardData.setData('text/plain', url);
-          document.getElementById('link').textContent = event.clipboardData.getData('text')
-        }
+      event.preventDefault()
+      if (event.clipboardData) {
+        event.clipboardData.setData('text/plain', url);
+        document.getElementById('link').textContent = event.clipboardData.getData('text')
       }
     }
   }
