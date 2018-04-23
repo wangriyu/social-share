@@ -24,7 +24,7 @@ config: src/js/share.js
   /*
   * 分享链接的信息
   */
-  var title = 'Wang RiYu\'s Blog' || window.location.href, url = 'http://blog.wangriyu.wang' || window.location.hostname, author = 'yule' || 'yule', img = 'http://blog.wangriyu.wang/img/yule.jpg' || 'http://blog.wangriyu.wang/img/yule.jpg';
+  var title = "Wang RiYu's Blog" || window.location.hostname, url = 'http://blog.wangriyu.wang' || window.location.href, author = 'yule' || 'yule', img = 'http://blog.wangriyu.wang/img/yule.jpg' || 'http://blog.wangriyu.wang/img/yule.jpg';
   /*
   * 修改 set 为 false 关闭相应按钮
   */
@@ -110,7 +110,7 @@ config: src/js/share.js
 ```html
   <!--<link href='//at.alicdn.com/t/font_635087_ef20v4flda62yb9.css' rel='stylesheet'>-->
   <link href='src/css/iconfont.css' rel='stylesheet'>
-  <link rel='stylesheet' href='src/css/share.min.css' type='text/css' media='all'/>
+  <link rel='stylesheet' href='src/css/spongebob.min.css' type='text/css' media='all'/>
 ```
 
 在 body 中插入:
@@ -132,7 +132,7 @@ config: src/js/share.js
     </div>
   </div>
   <script src='src/js/qrcode.min.js'></script>
-  <script src='src/js/share.min.js'></script>
+  <script src='src/js/spongebob.min.js'></script>
 </div>
 ```
 

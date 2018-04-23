@@ -97,7 +97,7 @@
           li.innerHTML = `<span id='copyBtn' class='item' title='${e.title}'>
                             <i class='iconfont ${e.icon}'></i>
                             <span class='social_name'>Copy link</span>
-                            <textarea id='selection' style='display: none'>a</textarea>
+                            <textarea id='selection' style='display: none'>${url}</textarea>
                           </span>`;
           break
         }
