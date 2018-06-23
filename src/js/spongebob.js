@@ -7,11 +7,11 @@
   /*
   * 分享链接的信息
   */
-  var title = shareConfig.title, url = shareConfig.url, author = shareConfig.author, img = shareConfig.img, services = shareConfig.services || {};
+  var title = encodeURI(shareConfig.title), url = encodeURI(shareConfig.url), author = encodeURI(shareConfig.author), img = encodeURI(shareConfig.img), services = shareConfig.services || {};
   var config = [{
     name: 'facebook',
     set: services.facebook != false,
-    api: `https://www.facebook.com/sharer/sharer.php?u=${encodeURI(url)}`,
+    api: `https://www.facebook.com/sharer/sharer.php?u=${url}`,
     title: 'Share this article on Facebook',
     icon: 'icon-facebook',
   }, {
@@ -22,49 +22,49 @@
   }, {
     name: 'twitter',
     set: services.twitter != false,
-    api: `https://twitter.com/intent/tweet?source=webclient&amp;original_referer=${encodeURI(url)}&amp;text=${encodeURI(title)}&amp;url=${encodeURI(url)}&amp;related=${encodeURI(author)}&amp;via=${encodeURI(author)}`,
+    api: `https://twitter.com/intent/tweet?source=webclient&amp;original_referer=${url}&amp;text=${title}&amp;url=${url}&amp;related=${author}&amp;via=${author}`,
     title: 'Share this article on Twitter',
     icon: 'icon-twitter'
   }, {
     name: 'weibo',
     set: services.weibo != false,
-    api: `http://v.t.sina.com.cn/share/share.php?url=${encodeURI(url)}&amp;title=${encodeURI(title)}&amp;content=utf8&amp;pic=${encodeURI(img)}`,
+    api: `http://v.t.sina.com.cn/share/share.php?url=${url}&amp;title=${title}&amp;content=utf8&amp;pic=${img}`,
     title: 'Share this article on Weibo',
     icon: 'icon-weibo'
   }, {
     name: 'qq',
     set: services.qq != false,
-    api: `http://connect.qq.com/widget/shareqq/index.html?url=${encodeURI(url)}&amp;title=${encodeURI(title)}&amp;pics=${encodeURI(img)}`,
+    api: `http://connect.qq.com/widget/shareqq/index.html?url=${url}&amp;title=${title}&amp;pics=${img}`,
     title: 'Share this article on QQ',
     icon: 'icon-qq'
   }, {
     name: 'qzone',
     set: services.qzone != false,
-    api: `http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=${encodeURI(url)}&amp;title=${encodeURI(title)}&amp;pics=${encodeURI(img)}`,
+    api: `http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=${url}&amp;title=${title}&amp;pics=${img}`,
     title: 'Share this article on Qzone',
     icon: 'icon-CN_tencentqzone'
   }, {
     name: 'douban',
     set: services.douban != false,
-    api: `http://www.douban.com/recommend/?url=${encodeURI(url)}&amp;title=${encodeURI(title)}&amp;image=${encodeURI(img)}`,
+    api: `http://www.douban.com/recommend/?url=${url}&amp;title=${title}&amp;image=${img}`,
     title: 'Share this article on Douban',
     icon: 'icon-douban'
   }, {
     name: 'youdao',
     set: services.youdao != false,
-    api: `http://note.youdao.com/memory/?title=${encodeURI(title)}&amp;pic=${encodeURI(img)}&amp;url=${encodeURI(url)}`,
+    api: `http://note.youdao.com/memory/?title=${title}&amp;pic=${img}&amp;url=${url}`,
     title: 'Share this article on YoudaoNote',
     icon: 'icon-youdaoyunbiji'
   }, {
     name: 'google',
     set: services.google != false,
-    api: `https://plus.google.com/share?url=${encodeURI(url)}`,
+    api: `https://plus.google.com/share?url=${url}`,
     title: 'Share this article on Google+',
     icon: 'icon-googleplus'
   }, {
     name: 'linkedin',
     set: services.linkedin != false,
-    api: `https://www.linkedin.com/shareArticle?title=${encodeURI(title)}&amp;url=${encodeURI(url)}`,
+    api: `https://www.linkedin.com/shareArticle?title=${title}&amp;url=${url}`,
     title: 'Share this article on LinkedIn',
     icon: 'icon-linkedin'
   }, {
@@ -75,7 +75,7 @@
   }, {
     name: 'mail',
     set: services.mail != false,
-    api: `mailto:?subject=${encodeURI(title)}&quot;&amp;body=permalink:${encodeURI(url)}`,
+    api: `mailto:?subject=${title}&quot;&amp;body=permalink:${url}`,
     title: 'Share this article by email',
     icon: 'icon-email'
   }];
@@ -182,5 +182,5 @@
         correctLevel: QRCode.CorrectLevel.M
       })
     }
-  })(`${encodeURI(url)}#.WthZlpz1y-Y.wechat`)
+  })(`${url}#.WthZlpz1y-Y.wechat`)
 })()
